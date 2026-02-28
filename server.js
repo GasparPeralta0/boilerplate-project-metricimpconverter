@@ -40,9 +40,21 @@ app.use(function(req, res, next) {
 
 const port = process.env.PORT || 3000;
 
+// ...todo tu setup arriba (express, app, middlewares, routes, etc.)
+
+// ✅ Montar rutas de FreeCodeCamp SIEMPRE (esto arregla /_api/get-tests y /_api/package.json)
+const fccTestingRoutes = require("./routes/fcctesting.js");
+fccTestingRoutes(app);
+
+// Si tu boilerplate trae routes/_api.js, descomenta estas 2 líneas
+// const apiRoutes = require("./routes/_api.js");
+// apiRoutes(app);
+
 //Start our server and tests!
 app.listen(port, function () {
   console.log("Listening on port " + port);
+
+  // ✅ Los tests automáticos SOLO en entorno test (esto está perfecto)
   if (process.env.NODE_ENV === "test") {
     console.log("Running Tests...");
     setTimeout(function () {
@@ -56,4 +68,4 @@ app.listen(port, function () {
   }
 });
 
-module.exports = app; //for testing
+ module.exports = app; //for testing
