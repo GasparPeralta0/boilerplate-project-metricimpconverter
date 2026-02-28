@@ -24,10 +24,7 @@ app.route('/')
   .get(function (req, res) {
     res.sendFile(process.cwd() + '/views/index.html');
   });
-
-//For FCC testing purposes
-fccTestingRoutes(app);
-
+ 
 //Routing for API 
 apiRoutes(app);  
     
@@ -53,9 +50,7 @@ fccTestingRoutes(app);
 //Start our server and tests!
 app.listen(port, function () {
   console.log("Listening on port " + port);
-
-  // ✅ Los tests automáticos SOLO en entorno test (esto está perfecto)
-  if (process.env.NODE_ENV === "test") {
+   if (process.env.NODE_ENV === "test") {
     console.log("Running Tests...");
     setTimeout(function () {
       try {
@@ -68,4 +63,4 @@ app.listen(port, function () {
   }
 });
 
- module.exports = app; //for testing
+module.exports = app; //for testing
